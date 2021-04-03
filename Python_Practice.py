@@ -56,3 +56,36 @@ import datetime
 now = datetime.datetime.now()
 # Print the present time.
 print("The time right now is ", now)
+
+# # The data we need to retrieve.
+# import csv
+# import random
+# import numpy as np
+# import os
+
+# # Assign a variable for the file to load and the path
+# # file_to_read = 'Resources/election_results.csv'  -  this is a different method
+# file_to_load = os.path.join("Resources", "election_results.csv")
+
+
+# # Open the election results and read the file
+# # election_data = open(file_to_read, "r") - this is a differet method
+# # election_data.close()
+# with open(file_to_load) as election_data:
+#     print(election_data)
+
+# # Create a filename variable to a direct or indirect path to the file. Making a file to save analysis.
+# file_to_save = os.path.join("analysis", "election_analysis.txt")
+# # Using the open() function with the "w" mode we will write data to the file.
+# # outfile = open(file_to_save, "w")
+# # Write something to the outfile
+# # outfile.write("Hello World")
+# # outfile.close()
+
+# # Cleaner version of writing to a file
+# with open(file_to_save, "w") as txt_file:
+#     # txt_file.write("Arapahoe\n")
+#     # txt_file.write("Denver\n")
+#     # txt_file.write("Jefferson")
+
+#     txt_file.write("Counties in the election\n------------------------\nArapahoe\nDenver\nJefferson")
