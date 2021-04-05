@@ -41,5 +41,42 @@ The analysis of the election shows that:
 
 ![Overview of Results](/Resources/Election_Summary.png)
 
+## Challenge Overview
+The challenge asked to find county information in addition to candidate information for this election.
+
 ## Challenge Summary (Using the script for other elections)
 This script can be used in any election that follows the same format by simply changing the file path on line 9.
+`file_to_load = os.path.join("Resources", "election_results.csv")
+
+Another election, for example for governor, could use this script with some modifications. A likely modification would be getting more data than the 3 columns of just voter id, county, and candidate choice. For example, a gubernatorial election may include cities as well as counties.
+
+If cities were added, they could be added as another column in the list of data on the csv received. If cities were the 4th column, they could be added without changing the other data at all. If they were a different column, say between voter id and county, one would only need to change the row number to equal that column from the csv minus 1.
+
+`city_name = row[1]`
+
+Then one would merely add variables for a list of city names, how many votes were from each city, or any other desired information if possible from what is given. After that modify the first for loop to make the list of cities. Finally, make a for loop within `with open(file_to_save, "w") as txt_file:` to get the voting results by city.
+
+City variables:
+```
+city_options = []
+city_votes = {}
+```
+
+First for loop:
+```
+        city_name = row[3]
+
+        if city_name not in city_options:
+            city_options.append(city_name)
+            city_votes[city_name] = 0
+```
+
+within `with open(file_to_save, "w") as txt_file:`
+```
+    for city_name in city_votes:
+        civotes = city_votes.get(city_name)
+        civote_percentage = float(civotes) / float(total_votes) * 100
+        city_results = (f"{city_name}: {civote_percentage:.1f}% ({civotes:,})\n")
+        print(city_results)
+        txt_file.write(city_results)
+```
